@@ -1,0 +1,30 @@
+#features {
+    padding: 75px 0 135px 0;
+}
+
+.features_content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 450px;
+}
+
+.features_content h5{
+    color: #0C5B47;
+    font-size: 46px;
+}
+
+.features_content .text {
+    font-size: 16px;
+    color: #0C5B47;
+}
+
+.features_content .owner {
+    font-size: 18px;
+    color: #1B745E;
+}
+
+.features_content img {
+    width: 200px;
+    height: 96px;
+}

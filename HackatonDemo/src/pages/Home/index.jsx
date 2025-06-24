@@ -12,7 +12,12 @@ const Home = () => {
             <div className="row">
               <div className="col-4">
                 <div className="pCard">
-                  
+                  <div className="icnheart">
+
+                  </div>
+                  <h3>Shop Flowers</h3>
+                  <p>summer sale under 50%</p>
+                  <button>Shop now</button>
                 </div>
               </div>
             </div>

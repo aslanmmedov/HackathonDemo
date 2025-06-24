@@ -6,12 +6,13 @@ import { Route, Routes } from 'react-router-dom'
 import Register from './pages/register'
 import Login from './pages/login'
 import Home from './pages/Home'
+import ClientLayout from './ClientLayout'
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path = "/">
+        <Route path = "/" element = {<ClientLayout/>}>
           <Route index element = {<Home/>}/>
           <Route path = "login" element = {<Login/>}/>
           <Route path = "register" element = {<Register/>}/>

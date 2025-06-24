@@ -1,1 +1,13 @@
-/*# sourceMappingURL=style.css.map */
+#triple {
+  background-image: url("https://mobirise.com/extensions/floram4/floral-studio/assets/images/background1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#triple #ourPortfolio .head {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}/*# sourceMappingURL=style.css.map */

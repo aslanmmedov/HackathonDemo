@@ -8,8 +8,14 @@ const Home = () => {
         <div className="head">
           <p>Devoted to wonderful beauty</p>
           <h1>Our Portfolio</h1>
-          <div className="cards">
-            
+          <div className="cardsContainer">
+            <div className="row">
+              <div className="col-4">
+                <div className="pCard">
+                  
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

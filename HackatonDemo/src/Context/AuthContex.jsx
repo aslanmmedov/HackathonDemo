@@ -2,6 +2,7 @@
 import { createContext, useContext, useState } from 'react';
 import controller from '../Api/controllers';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 export const AuthContext = createContext(null);
 
  const AuthProvider = ({ children }) => {
@@ -11,11 +12,11 @@ export const AuthContext = createContext(null);
 
     const register = async (values) => {
         try {
-            await controller.addNewData("Users", values);
+            await controller.addNewData("Users",values);
+            console.log("message",response);
             // navigate("/login");
         } catch (error) {
             console.error(error?.response?.data?.message || error.message);
-
         }
     };
     const login = async (values) => {

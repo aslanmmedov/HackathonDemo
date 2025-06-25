@@ -17,7 +17,7 @@ function Register() {
       surname: '',
       username: '',
       email: '',
-      password: '',
+      password: '', 
       passwordConfirm: '',
     },
     validationSchema: Yup.object({
@@ -39,7 +39,6 @@ function Register() {
         .required('Required'),
     }),
     onSubmit: async (values) => {
-      console.log(values);
       await register(values);
       console.log("Registering user...");
     },

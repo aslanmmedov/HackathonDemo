@@ -34,10 +34,10 @@ const deleteDataById = async (endpoint, id) => {
 const addNewData = async (endpoint, payload) => {
   try {
     const response = await axios.post(`${BASE_URL}/${endpoint}`, payload);
-    console.log(response.data);
+    console.log("error one",response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log("log error",error);
   }
 };
 //update data by id

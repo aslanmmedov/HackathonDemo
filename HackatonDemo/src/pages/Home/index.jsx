@@ -2,9 +2,15 @@ import React from 'react'
 import { FaRegHeart } from "react-icons/fa";
 
 import "./style.scss"
+import Hero from '../../components/hero/Hero'
+import Features from '../../components/features/Features'
+import Services from '../../components/services/Services'
 const Home = () => {
   return (
    <>
+      <Hero/>
+   <Features/>
+   <Services/>
    <section id="triple">
       <section id="OurPortfolio">
       <div className="container">
@@ -143,7 +149,6 @@ const Home = () => {
       </div>
       </section>
    </section>
-
    </>
   )
 }

@@ -1,8 +1,12 @@
 import React from 'react'
+import Navbar from '../../components/navbar/Navbar'
+import "./Header.css"
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <section id='header'>
+      <Navbar/>
+    </section>
   )
 }
 

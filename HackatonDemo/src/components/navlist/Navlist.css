@@ -1,0 +1,14 @@
+.listt {
+    display: flex;
+    gap: 20px;
+}
+
+.listt_item {
+    font-size: 16px;
+    color: white;
+}
+
+.listt_item:hover {
+    color: orange;
+    transition: .5s ease all;
+}

@@ -1,5 +1,7 @@
-import { BASE_URL } from "./constants";
+import { BASE_URL } from "./constants.js";
 import axios from "axios";
+
+axios.defaults.withCredentials = true; 
 
 //get all data
 const getAllData = async (endpoint) => {
@@ -32,7 +34,7 @@ const deleteDataById = async (endpoint, id) => {
 const addNewData = async (endpoint, payload) => {
   try {
     const response = await axios.post(`${BASE_URL}/${endpoint}`, payload);
-    // console.log(response.data);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);

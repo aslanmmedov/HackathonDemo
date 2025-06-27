@@ -2,15 +2,16 @@ import React, { useContext } from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './index.scss';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../Context/AuthContex';
-import { BASE_URL } from '../../Api/constants';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAddUserMutation } from '../../Redux/services/Userservice';
+// import { AuthContext } from '../../Context/AuthContex';
+// import { BASE_URL } from '../../Api/constants';
 
-console.log(BASE_URL);
+// console.log(BASE_URL);
 function Register() {
-
-  const { register } = useContext(AuthContext);
-// console.log(register);
+  let [addUser] = useAddUserMutation()
+  let navigate = useNavigate()
+  // console.log(register);
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -39,8 +40,11 @@ function Register() {
         .required('Required'),
     }),
     onSubmit: async (values) => {
-      await register(values);
-      console.log("Registering user...");
+      console.log(values);
+      await addUser(values);
+      alert('User registered successfully');
+      // navigate('/login');
+
     },
   });
 
@@ -117,7 +121,7 @@ function Register() {
           <div>{formik.errors.password}</div>
         ) : null}
 
-  <input
+        <input
           id="passwordConfirm"
           name="passwordConfirm"
           type="password"

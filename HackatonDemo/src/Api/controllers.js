@@ -33,8 +33,10 @@ const deleteDataById = async (endpoint, id) => {
 //add new data by id
 const addNewData = async (endpoint, payload) => {
   try {
-    const response = await axios.post(`${BASE_URL}/${endpoint}`, payload);
-    console.log("error one",response.data);
+    const response = await axios.post(`${BASE_URL}/${endpoint}`, payload,{
+      withCredentials: true
+    });
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log("log error",error);

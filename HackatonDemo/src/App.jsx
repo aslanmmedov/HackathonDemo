@@ -9,7 +9,6 @@ import Confirm from './pages/Confirm'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ForgotPassword from './pages/ForgotPassword'
-import VerifyForgotPassword from './pages/ForgotPassword/VerifyForgotPassword'
 import UpdatePassword from './pages/UpdatePassword'
 import Orders from './AdminDashboard/pages/Orders'
 import Products from './AdminDashboard/pages/Products'
@@ -19,6 +18,7 @@ import Suppliers from './AdminDashboard/pages/Suppliers'
 import AdminLayout from './AdminDashboard/pages/AdminLayout'
 import Dashboard from './AdminDashboard/pages/Dashboard'
 
+import Error404 from './pages/ErrorPage'
 function App() {
   return (
     <>
@@ -43,6 +43,7 @@ function App() {
         </Route>
       </Routes>
        <ToastContainer position="top-right" autoClose={3000} />
+
     </>
   )
 }

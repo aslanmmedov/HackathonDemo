@@ -92,6 +92,13 @@ export const userApi = createApi({
         body: { userId, resetToken },
       }),
     }),
+     UpdatePassword: builder.mutation({
+            query: (data) => ({
+                url: '/Users/update-password',
+                method: 'POST',
+                body: data,
+            }),
+        }),
     getUsers: builder.query({
       query: ({ page = 1, size = 10 }) => ({
         url:" /Users",
@@ -100,15 +107,7 @@ export const userApi = createApi({
       }),
     }),
   }),
-        UpdatePassword: builder.mutation({
-            query: (data) => ({
-                url: '/Users/update-password',
-                method: 'POST',
-                body: data,
-            }),
-        }),
-    }),
-});
+    })
 
 export const {
   useLoginUserMutation,

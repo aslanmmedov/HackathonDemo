@@ -30,8 +30,8 @@ function App() {
           <Route path = "confirm-email/:userId/:token" element = {<Confirm/>}/>
           <Route path = "forgot-password" element = {<ForgotPassword/>}/>
           <Route path = "confirm-email/:userId/:token" element = {<Confirm/>}/>
-          <Route path = "update-password/:userId/:resetToken" element = {<VerifyForgotPassword/>}/>
-           <Route path = "update-password" element = {<UpdatePassword/>}/>
+          <Route path = "update-password/:userId/:resetToken" element = {<UpdatePassword/>}/>
+          <Route path = "*" element = {<Error404/>}/>
         </Route>
         <Route path = "/admin_dashboard" element = {<AdminLayout/>}>
           <Route index element = {<Dashboard/>}/>

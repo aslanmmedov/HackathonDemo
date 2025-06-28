@@ -1,17 +1,18 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './index.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Form, Link, useNavigate } from 'react-router-dom';
 import { useAddUserMutation } from '../../Redux/services/Userservice';
-// import { AuthContext } from '../../Context/AuthContex';
-// import { BASE_URL } from '../../Api/constants';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// console.log(BASE_URL);
+
+
 function Register() {
-  let [addUser] = useAddUserMutation()
-  let navigate = useNavigate()
-  // console.log(register);
+  const [addUser] = useAddUserMutation()
+  const navigate = useNavigate()
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -23,37 +24,60 @@ function Register() {
     },
     validationSchema: Yup.object({
       name: Yup.string()
-        .max(15, 'Must be 15 characters or less')
-        .required('Required'),
-      username: Yup.string()
-        .max(15, 'Must be 15 characters or less')
-        .required('Required'),
-      surname: Yup.string()
-        .max(20, 'Must be 20 characters or less')
-        .required('Required'),
-      email: Yup.string().email('Invalid email address').required('Required'),
-      password: Yup.string()
-        .min(6, "Password must be at least 6 characters")
-        .required("Required"),
-      passwordConfirm: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
-        .required('Required'),
-    }),
-    onSubmit: async (values) => {
-      console.log(values);
-      await addUser(values);
-      alert('User registered successfully');
-      // navigate('/login');
+        .required("Name field cannot be empty.")
+        .matches(/^[a-zA-Z\s]+$/, "Name must contain only letters and spaces."),
 
-    },
+      surname: Yup.string()
+        .required("Surname field cannot be empty.")
+        .matches(/^[a-zA-Z\s]+$/, "Surname must contain only letters and spaces."),
+
+      username: Yup.string()
+        .required("Username field cannot be empty.")
+        .min(3, "Username must be at least 3 characters long.")
+        .matches(/^[a-zA-Z0-9_]+$/, "Username can only contain letters, numbers, and underscores."),
+
+      email: Yup.string()
+        .required("Email field cannot be empty.")
+        .email("Please enter a valid email address."),
+
+      password: Yup.string()
+        .required("Password field cannot be empty.")
+        .min(8, "Password must be at least 8 characters long.")
+        .matches(/[A-Z]/, "Password must contain at least one uppercase letter.")
+        .matches(/[a-z]/, "Password must contain at least one lowercase letter.")
+        .matches(/[0-9]/, "Password must contain at least one digit.")
+        .matches(/\W/, "Password must contain at least one special character."),
+
+      passwordConfirm: Yup.string()
+        .required("Password confirmation field cannot be empty.")
+        .oneOf([Yup.ref("password"), null], "Password and confirmation must match.")
+    }),
+
+    onSubmit: async (values, { setErrors }) => {
+      try {
+        await addUser(values).unwrap();
+          toast.success("Registration successful! Check your email to confirm your account.");
+    setTimeout(()=>{
+        formik.resetForm();
+    }, 4000);
+      } catch (error) {
+        if (error?.data?.errors) {
+          const backendErrors = error.data.errors;
+          const formErrors = {};
+          for (const key in backendErrors) {
+            formErrors[key] = backendErrors[key][0];
+          }
+          setErrors(formErrors);
+        } else if (error?.data?.message) {
+          toast.error(error.data.message);
+        } else {
+          toast.error("Server error. Please try again later.");
+        }
+      }
+    }
   });
 
-
-
-
   return (
-
-
     <div className='Auth'>
       <h2>Register</h2>
       <form onSubmit={formik.handleSubmit}>
@@ -66,9 +90,9 @@ function Register() {
           value={formik.values.name}
           placeholder='Name'
         />
-        {formik.touched.name && formik.errors.name ? (
-          <div>{formik.errors.name}</div>
-        ) : null}
+        {formik.touched.name && formik.errors.name && (
+          <div className="error">{formik.errors.name}</div>
+        )}
 
         <input
           id="surname"
@@ -79,9 +103,9 @@ function Register() {
           value={formik.values.surname}
           placeholder='Surname'
         />
-        {formik.touched.surname && formik.errors.surname ? (
-          <div>{formik.errors.surname}</div>
-        ) : null}
+        {formik.touched.surname && formik.errors.surname && (
+          <div className="error">{formik.errors.surname}</div>
+        )}
 
         <input
           id="username"
@@ -90,11 +114,11 @@ function Register() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
-          placeholder='User Name'
+          placeholder='Username'
         />
-        {formik.touched.username && formik.errors.username ? (
-          <div>{formik.errors.username}</div>
-        ) : null}
+        {formik.touched.username && formik.errors.username && (
+          <div className="error">{formik.errors.username}</div>
+        )}
 
         <input
           id="email"
@@ -105,9 +129,10 @@ function Register() {
           value={formik.values.email}
           placeholder='Email'
         />
-        {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
-        ) : null}
+        {formik.touched.email && formik.errors.email && (
+          <div className="error">{formik.errors.email}</div>
+        )}
+
         <input
           id="password"
           name="password"
@@ -117,9 +142,9 @@ function Register() {
           value={formik.values.password}
           placeholder='Password'
         />
-        {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
-        ) : null}
+        {formik.touched.password && formik.errors.password && (
+          <div className="error">{formik.errors.password}</div>
+        )}
 
         <input
           id="passwordConfirm"
@@ -130,16 +155,15 @@ function Register() {
           value={formik.values.passwordConfirm}
           placeholder='Confirm Password'
         />
-        {formik.touched.passwordConfirm && formik.errors.passwordConfirm ? (
-          <div>{formik.errors.passwordConfirm}</div>
-        ) : null}
+        {formik.touched.passwordConfirm && formik.errors.passwordConfirm && (
+          <div className="error">{formik.errors.passwordConfirm}</div>
+        )}
 
         <button type="submit">Submit</button>
       </form>
       <div>Already have an account? <Link to="/login">Login</Link></div>
     </div>
-
   );
 }
 
-export default Register
+export default Register;

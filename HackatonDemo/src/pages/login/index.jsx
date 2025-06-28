@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
   let [loginUser] = useLoginUserMutation()
   let navigate = useNavigate();
-  let navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
 

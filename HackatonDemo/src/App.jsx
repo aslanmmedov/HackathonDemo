@@ -25,14 +25,14 @@ function App() {
       <Routes>
         <Route path = "/" element = {<ClientLayout/>}>
           <Route index element = {<Home/>}/>
-          <Route path = "login" element = {<Login/>}/>
-          <Route path = "register" element = {<Register/>}/>
           <Route path = "confirm-email/:userId/:token" element = {<Confirm/>}/>
           <Route path = "forgot-password" element = {<ForgotPassword/>}/>
           <Route path = "confirm-email/:userId/:token" element = {<Confirm/>}/>
           <Route path = "update-password/:userId/:resetToken" element = {<UpdatePassword/>}/>
           <Route path = "*" element = {<Error404/>}/>
         </Route>
+        <Route path = "/login" element = {<Login/>}/>
+        <Route path = "/register" element = {<Register/>}/>
         <Route path = "/admin_dashboard" element = {<AdminLayout/>}>
           <Route index element = {<Dashboard/>}/>
           <Route path = "orders" element = {<Orders/>}/>

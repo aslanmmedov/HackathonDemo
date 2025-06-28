@@ -1,27 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import DynamicPage from '../../components/DynamicPage'
 import { useGetUsersQuery } from '../../../Redux/services/Userservice';
 function Users() {
-  let {data, isLoading, isError} = useGetUsersQuery({ page: 1, size: 10 });
-
+  let {data, isLoading, isError} = useGetUsersQuery({ page: 0, size: 1 });
+  
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error loading users</p>;
 
-//   const dataSource = [
-//   {
-//     key: '1',
-//     name: 'Mike',
-//     age: 32,
-//     address: '10 Downing Street',
-//   },
-//   {
-//     key: '2',
-//     name: 'John',
-//     age: 42,
-//     address: '10 Downing Street',
-//   },
-// ];
-
+  // console.log("aslan",data.data.users);
+  
 const columns = [
   {
     title: 'Name',
@@ -35,12 +22,17 @@ const columns = [
   },
   {
     title: 'Username',
-    dataIndex: 'username',
-    key: 'username',
+    dataIndex: 'userName',
+    key: 'userName',
+  },
+  {
+    title: 'Email',
+    dataIndex: 'email',
+    key: 'email',
   },
 ];
   return (
-  <DynamicPage columns={columns} data={data} />
+  <DynamicPage columns={columns} data={data.data.users} />
   )
 }
 

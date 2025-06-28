@@ -12,6 +12,7 @@ function DynamicPage({ columns, data, onSubmit }) {
     const [open, setOpen] = useState(false);
     let location = useLocation()
     let pathname = location.pathname.split('/')[2]
+    console.log("filterdata",filterData);
     
     const dataWithKey = filterData?.map((item, index) => ({ ...item, key: item.id || index }));
     const lang = i18n.language;

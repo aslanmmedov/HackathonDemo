@@ -100,8 +100,8 @@ export const userApi = createApi({
             }),
         }),
     getUsers: builder.query({
-      query: ({ page = 1, size = 10 }) => ({
-        url:" /Users",
+      query: ({ page,size }) => ({
+        url:"/Users",
         method: "GET",
         params: { page, size },
       }),

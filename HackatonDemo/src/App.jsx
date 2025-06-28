@@ -9,8 +9,8 @@ import Confirm from './pages/Confirm'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ForgotPassword from './pages/ForgotPassword'
-import VerifyForgotPassword from './pages/ForgotPassword/VerifyForgotPassword'
 import UpdatePassword from './pages/UpdatePassword'
+import Error404 from './pages/ErrorPage'
 function App() {
   return (
     <>
@@ -22,11 +22,12 @@ function App() {
           <Route path = "confirm-email/:userId/:token" element = {<Confirm/>}/>
           <Route path = "forgot-password" element = {<ForgotPassword/>}/>
           <Route path = "confirm-email/:userId/:token" element = {<Confirm/>}/>
-          <Route path = "update-password/:userId/:resetToken" element = {<VerifyForgotPassword/>}/>
-           <Route path = "update-password" element = {<UpdatePassword/>}/>
+          <Route path = "update-password/:userId/:resetToken" element = {<UpdatePassword/>}/>
+          <Route path = "*" element = {<Error404/>}/>
         </Route>
       </Routes>
        <ToastContainer position="top-right" autoClose={3000} />
+
     </>
   )
 }

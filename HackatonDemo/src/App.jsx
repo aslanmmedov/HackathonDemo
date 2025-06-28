@@ -6,6 +6,13 @@ import Login from './pages/login'
 import Home from './pages/Home'
 import ClientLayout from './ClientLayout'
 import Confirm from './pages/Confirm'
+import Orders from './AdminDashboard/pages/Orders'
+import Products from './AdminDashboard/pages/Products'
+import Stores from './AdminDashboard/pages/Stores'
+import Users from './AdminDashboard/pages/Users'
+import Suppliers from './AdminDashboard/pages/Suppliers'
+import AdminLayout from './AdminDashboard/pages/AdminLayout'
+import Dashboard from './AdminDashboard/pages/Dashboard'
 
 function App() {
   return (
@@ -16,6 +23,14 @@ function App() {
           <Route path = "login" element = {<Login/>}/>
           <Route path = "register" element = {<Register/>}/>
           <Route path = "confirm-email/:userId/:token" element = {<Confirm/>}/>
+        </Route>
+        <Route path = "/admin_dashboard" element = {<AdminLayout/>}>
+          <Route index element = {<Dashboard/>}/>
+          <Route path = "orders" element = {<Orders/>}/>
+          <Route path = "products" element = {<Products/>}/>
+          <Route path = "stores" element = {<Stores/>}/>
+          <Route path = "users" element = {<Users/>}/>
+          <Route path = "suppliers" element = {<Suppliers/>}/>
         </Route>
       </Routes>
     </>

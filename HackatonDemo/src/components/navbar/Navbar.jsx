@@ -5,7 +5,7 @@ import Navlist from '../navlist/Navlist'
 
 const Navbar = () => {
   return (
-    <div className='navbarr container'>
+    <div className='navbarrr container'>
         <Logo/>
         <Navlist/>
     </div>

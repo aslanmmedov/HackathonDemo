@@ -8,7 +8,7 @@ import { useLoginUserMutation } from '../../Redux/services/Userservice';
 
 const Login = () => {
   let [loginUser] = useLoginUserMutation()
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
 
@@ -37,7 +37,7 @@ const Login = () => {
       localStorage.setItem('refreshToken', response.data.refreshToken);
       // Cookies.set('accessToken', response.data.accessToken, { expires: accessExpiry });
       // Cookies.set('refreshToken', response.data.refreshToken, { expires: refreshExpiry });
-      // navigate('/')
+      navigate('/')
 
 
     },

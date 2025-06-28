@@ -1,7 +1,6 @@
 import { BASE_URL } from "./constants.js";
 import axios from "axios";
 
-axios.defaults.withCredentials = true; 
 
 //get all data
 const getAllData = async (endpoint) => {

@@ -6,7 +6,7 @@ import TranslateWidget from '../Translate'
 
 const Navbar = () => {
   return (
-    <div className='navbarr container'>
+    <div className='navbarrr container'>
         <Logo/>
         <TranslateWidget/>
         <Navlist/>

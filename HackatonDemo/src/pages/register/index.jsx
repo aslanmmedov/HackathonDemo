@@ -19,7 +19,7 @@ function Register() {
       surname: '',
       username: '',
       email: '',
-      password: '',
+      password: '', 
       passwordConfirm: '',
     },
     validationSchema: Yup.object({

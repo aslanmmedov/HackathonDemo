@@ -1,7 +1,6 @@
 import { BASE_URL } from "./constants.js";
 import axios from "axios";
 
-axios.defaults.withCredentials = true; 
 
 //get all data
 const getAllData = async (endpoint) => {
@@ -39,7 +38,7 @@ const addNewData = async (endpoint, payload) => {
     console.log(response.data);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.log("log error",error);
   }
 };
 //update data by id

@@ -1,0 +1,136 @@
+#triple {
+  background-image: url("https://mobirise.com/extensions/floram4/floral-studio/assets/images/background1.jpg");
+  background-size: cover;
+  background-position: center;
+  #OurPortfolio {
+    padding: 6rem 0;
+    .head {
+      width: 100%;
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      color: #0c5b47;
+      h1 {
+        font-size: 3.2rem;
+        font-weight: 300;
+      }
+      p {
+        font-style: italic;
+      }
+    }
+    .cardsContainer {
+      margin-top: 3rem;
+      .pCard {
+        width: 100%;
+        background-color: #e8f0e5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 2.65rem;
+        opacity: 0.8;
+        .icnheart {
+          font-size: 5rem;
+          font-weight: 400;
+          color: #0c5b47;
+        }
+        h3 {
+          font-size: 2rem;
+          font-weight: 400;
+          font-style: italic;
+          color: #0c5b47;
+        }
+        p {
+          color: #0c5b47;
+          font-style: italic;
+        }
+        button {
+          border: none;
+          background-color: #d8e3d5;
+          padding: 1rem 2.4rem;
+          font-size: 1.2rem;
+          color: #0c5b47;
+          margin-top: 1rem;
+        }
+      }
+      .iCard {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  #OurEvents {
+    padding: 6rem 0;
+    .head {
+      width: 100%;
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      color: #0c5b47;
+      h1 {
+        font-size: 3.2rem;
+        font-weight: 300;
+      }
+      p {
+        font-style: italic;
+      }
+    }
+    .cardsContainer {
+      margin-top: 3rem;
+      .pCard {
+        width: 100%;
+        background-color: #fef1e6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 4rem;
+        opacity: 0.8;
+        border: 1px solid #1b745e;
+        .priceCard {
+          color: #0c5b47;
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            font-style: italic;
+          }
+        }
+        h3 {
+          font-size: 2rem;
+          font-weight: 400;
+          font-style: italic;
+          color: #0c5b47;
+        }
+        p {
+          color: #0c5b47;
+          font-style: italic;
+        }
+        button {
+          border: none;
+          background-color: #d8e3d5;
+          padding: 1rem 2.4rem;
+          font-size: 1.2rem;
+          color: #0c5b47;
+          margin-top: 1rem;
+        }
+      }
+      .iCard {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -12,7 +12,6 @@ const Login = () => {
   let navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-
       usernameOrEmail: '',
       password: '',
     },
@@ -25,10 +24,12 @@ const Login = () => {
         .required("Required"),
     }),
     onSubmit: async (values) => {
-      console.log(values);
-      const response = await loginUser(values).unwrap()
-      localStorage.setItem('accessToken', response.data.accessToken);
-      localStorage.setItem('refreshToken', response.data.refreshToken);
+      // console.log("values",values);
+      const response = await loginUser(values).unwrap();
+      // console.log("user",);
+      
+      localStorage.setItem('accessToken', response.data.token.accessToken);
+      localStorage.setItem('refreshToken', response.data.token.refreshToken);
       setTimeout(() => {
         toast.success('Login successful!', {
           position: "top-right",

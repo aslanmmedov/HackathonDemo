@@ -20,7 +20,6 @@ export const addStore = async (newStore) => {
 
     }
 }
-
 export const updateStore = async (id,updateStore)=>{
     try {
         const response = await axiosConfig.put(`/stores/${id}`,updateStore)

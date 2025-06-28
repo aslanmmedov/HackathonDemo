@@ -4,11 +4,12 @@ import * as Yup from 'yup';
 import '../register/index.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLoginUserMutation } from '../../Redux/services/Userservice';
-// import Cookies from 'js-cookie';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   let [loginUser] = useLoginUserMutation()
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
 
@@ -26,18 +27,15 @@ const Login = () => {
     onSubmit: async (values) => {
       console.log(values);
       const response = await loginUser(values).unwrap()
-
-      // const now = new Date();
-
-      // const accessExpiry = new Date(now.getTime() + 5 * 1000);
-
-      // const refreshExpiry = new Date(now.getTime() + 600 * 60 * 1000);
-
       localStorage.setItem('accessToken', response.data.accessToken);
       localStorage.setItem('refreshToken', response.data.refreshToken);
-      // Cookies.set('accessToken', response.data.accessToken, { expires: accessExpiry });
-      // Cookies.set('refreshToken', response.data.refreshToken, { expires: refreshExpiry });
-      // navigate('/')
+      setTimeout(() => {
+        toast.success('Login successful!', {
+          position: "top-right",
+        });
+      }, 3000);
+
+      navigate('/')
 
 
     },
@@ -47,6 +45,7 @@ const Login = () => {
 
 
     <div className='Auth'>
+      <ToastContainer />
       <h2>Login</h2>
       <form onSubmit={formik.handleSubmit}>
 
@@ -78,7 +77,7 @@ const Login = () => {
           <div>{formik.errors.password}</div>
         ) : null}
 
-
+        <Link to="/forgot-password"  style={{alignSelf:'flex-end'}}>Forgot Password?</Link>
         <button type="submit">Submit</button>
       </form>
       <div>Don't have an account? <Link to="/register">Register</Link></div>

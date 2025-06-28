@@ -1,17 +1,20 @@
-import { configureStore } from '@reduxjs/toolkit'
-// Or from '@reduxjs/toolkit/query/react'
-import { setupListeners } from '@reduxjs/toolkit/query'
-import { userApi } from './services/Userservice'
+import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import apis from "./services";
+import FavoriteReducer from "./slice/FavoriteSlice";
+import BasketReducer from './slice/BasketSlice';
+const reducers = { favorite: FavoriteReducer, basket: BasketReducer };
+const middlewares = [];
+
+apis.forEach((api) => {
+  reducers[api.reducerPath] = api.reducer;
+  middlewares.push(api.middleware);
+});
 
 export const store = configureStore({
-  reducer: {
-
-    [userApi.reducerPath]: userApi.reducer,
-  },
-
+  reducer: reducers,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(userApi.middleware),
-})
+    getDefaultMiddleware().concat(middlewares),
+});
 
-
-setupListeners(store.dispatch)
+setupListeners(store.dispatch);
